@@ -75,8 +75,7 @@ public class ObjectCreator {
    */
   private Reference createReferenceObject() {
     System.out.println("Creating reference object");
-    Primitives userPrimitive = createPrimitiveObject();
-    return new Reference(userPrimitive);                // TODO refactor
+    return new Reference(createPrimitiveObject());
   }
 
   /**
@@ -88,7 +87,7 @@ public class ObjectCreator {
     System.out.println("Creating primitive array object");
 
     System.out.println("Enter a size of array: ");
-    int size = input.nextInt();                         // TODO refactor
+    int size = input.nextInt();
     int [] intArray = new int[size];
 
     System.out.println("Arbitrary setting values in array");
