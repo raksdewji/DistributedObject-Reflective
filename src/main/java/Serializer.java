@@ -12,11 +12,11 @@ import java.util.IdentityHashMap;
 
 public class Serializer {
   private IdentityHashMap<Object, Integer> hashMap = new IdentityHashMap<>();
-  private Document doc;
   private Integer id = 0;
+  private Document doc;
 
   public Document serialize(Object obj) throws  IllegalAccessException {
-    doc.setRootElement(new Element("Serialized"));
+    doc = new Document(new Element("Serialized"));
     serializeObject(obj);
 
     try {
@@ -27,14 +27,13 @@ public class Serializer {
     } catch (IOException e) {
       e.printStackTrace();
     }
-
     return doc;
   }
 
   private void serializeObject(Object obj) throws IllegalAccessException {
     Class c = obj.getClass();
     Integer objID = getID(obj);
-    Element objElement = new Element("Object");       // TODO refactor
+    Element objElement = new Element("Object");
     objElement.setAttribute(new Attribute("Class", c.getName()));
     objElement.setAttribute(new Attribute("ID", objID.toString()));
 
@@ -93,13 +92,13 @@ public class Serializer {
     if (obj == null)
       value.setText("null");
     else
-      value.setText(value.toString());
+      value.setText(obj.toString());
     return value;
   }
 
   private Element addReferenceElement (String id) {
     Element reference = new Element("Reference");
-    reference.setText(id.toString());
+    reference.setText(id);
     return reference;
   }
 

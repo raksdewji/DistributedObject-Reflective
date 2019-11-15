@@ -1,10 +1,9 @@
-import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Objects.*;
 
 public class ObjectCreator {
-  private ArrayList<Object> objectList = new ArrayList<>();
+  //private ArrayList<Object> objectList = new ArrayList<>();
   private Scanner input = new Scanner(System.in);
 
   public static void main(String[] args) {
@@ -12,7 +11,7 @@ public class ObjectCreator {
     obj.runObjectCreator();
   }
 
-  private void runObjectCreator() {
+  public Object runObjectCreator() {
     boolean runProgram = true;
 
     while (runProgram) {
@@ -20,21 +19,22 @@ public class ObjectCreator {
       int choice = input.nextInt();
 
       if (choice == 1) {
-        objectList.add(createPrimitiveObject());
+        return createPrimitiveObject();
       } else if (choice == 2) {
-        objectList.add(createReferenceObject());
+        return createReferenceObject();
       } else if (choice == 3) {
-        objectList.add(createPrimitiveArray());
+        return createPrimitiveArray();
       } else if (choice == 4) {
-        objectList.add(createReferenceArray());
+        return createReferenceArray();
       } else if (choice == 5) {
-        objectList.add(createCollectionsObject());
+        return createCollectionsObject();
       } else if (choice == 6) {
         runProgram = false;
       } else {
         System.out.println("Invalid choice, choose from 1-6 choices");
       }
     }
+    return null;
   }
 
   private void printMenu() {
