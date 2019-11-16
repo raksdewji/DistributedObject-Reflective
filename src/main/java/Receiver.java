@@ -29,11 +29,6 @@ public class Receiver {
       System.out.print("Received document");
       ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
       Document doc = (Document) inputStream.readObject();
-
-
-
-     // SAXBuilder builder = new SAXBuilder();
-     // Document doc = builder.build(socket.getInputStream());
       Object obj = deserializer.deserialize(doc);
 
       visualizer.inspect(obj, true);

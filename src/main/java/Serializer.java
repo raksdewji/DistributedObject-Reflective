@@ -65,8 +65,7 @@ public class Serializer {
         Object value = f.get(obj);
 
         if (f.getType().isPrimitive()) {
-          Element el = addValueElement(value);
-          fieldElem.addContent(el);
+          fieldElem.addContent(addValueElement(value));
         } else {
           Element refElement = addReferenceElement(getID(value).toString());
           fieldElem.addContent(refElement);

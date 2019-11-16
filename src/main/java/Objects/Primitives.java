@@ -1,8 +1,8 @@
 package Objects;
 
 public class Primitives {
-  private int x;
-  private double y;
+  public int x;
+  public double y;
 
   public Primitives() {}
 
